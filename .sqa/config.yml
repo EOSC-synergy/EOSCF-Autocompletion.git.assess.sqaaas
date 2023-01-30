@@ -1,0 +1,68 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/1.7.8
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/athenarc/EOSCF-Autocompletion:
+      branch: master
+      repo: https://github.com/athenarc/EOSCF-Autocompletion.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion git:
+        commands:
+        - /usr/bin/env sh .sqa/script.boozy-chartreuse-barnacle.sh
+        container: qc.acc_breezy-green-dalmatian
+  QC.Doc:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.bluesy-auburn-devil.sh
+        container: qc.doc_sunny-teal-neanderthal
+      github.com/athenarc/EOSCF-Autocompletion git:
+        commands:
+        - /usr/bin/env sh .sqa/script.lousy-sepia-manatee.sh
+        container: qc.doc_trippy-denim-fossa
+      github.com/athenarc/EOSCF-Autocompletion markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.cranky-salmon-deer.sh
+        container: qc.doc_seedy-alizarin-chameleon
+  QC.Lic:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.gimpy-mauve-echidna.sh
+        container: qc.lic_snappy-amber-tarantula
+  QC.Met:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.paltry-amethyst-neanderthal.sh
+        container: qc.met_bluesy-cream-stoat
+  QC.Sec:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.wiggy-flax-dugong.sh
+        container: qc.sec_fuzzy-buff-cat
+  QC.Sty:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.grumpy-cornflower-spider.sh
+        container: qc.sty_cheeky-corn-camel
+      github.com/athenarc/EOSCF-Autocompletion jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.zippy-salmon-tapir.sh
+        container: qc.sty_scummy-sapphire-robin
+  QC.Ver:
+    repos:
+      github.com/athenarc/EOSCF-Autocompletion get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.shabby-chocolate-tarantula.sh
+        container: qc.ver_cozy-buff-raccoon
+timeout: 5400
